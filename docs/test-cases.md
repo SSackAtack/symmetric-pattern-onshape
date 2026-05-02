@@ -124,9 +124,7 @@
 | Kolumny | 5 |
 | Wiersze | 4 |
 | Skip instances | Włączone |
-| Skip count | 2 |
-| Skip 1 row / column | 2 / 3 |
-| Skip 2 row / column | 4 / 5 |
+| Skip list | `2,3; 4,5` |
 
 **Oczekiwany wynik:** Elementy w rzędzie 2 kolumnie 3 oraz rzędzie 4 kolumnie 5 nie powstają. Pozostałe elementy szyku pozostają bez zmian.
 

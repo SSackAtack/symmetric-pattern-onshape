@@ -47,7 +47,7 @@ W trybie `Grid` punkt `Row end point` wyznacza końcową granicę osi rzędów, 
 
 Jeśli włączysz `Stagger`, możesz dodatkowo użyć `Reduce staggered rows`. Przesunięte rzędy zachowują pierwszy element na pozycji wynikającej ze stagger offsetu, a wskazana liczba elementów jest usuwana z prawego końca rzędu.
 
-Opcja `Skip instances` pozwala pominąć do 10 konkretnych instancji przez pary `row/column`. Numeracja jest użytkowa, od `1`, więc `row = 2`, `column = 3` oznacza drugi rząd i trzecią kolumnę. Po włączeniu opcji UI pokazuje 10 slotów; `Skip count` określa, ile pierwszych slotów jest aktywnych.
+Opcja `Skip instances` pozwala pominąć konkretne instancje przez listę par `row,column`. Numeracja jest użytkowa, od `1`, więc `2,3` oznacza drugi rząd i trzecią kolumnę. Kilka elementów podajesz po średniku, np. `2,3; 4,5; 6,7`.
 
 ## 🔧 Jak używać
 
@@ -58,7 +58,7 @@ Opcja `Skip instances` pozwala pominąć do 10 konkretnych instancji przez pary 
 5. Ustaw liczbę `Columns`
 6. Opcjonalnie włącz `Grid` → ustaw `Rows`, wskaż `Row end point`, ustaw `Stagger`
 7. Jeśli przesunięty rząd wchodzi w prawy margines, włącz `Reduce staggered rows` i ustaw `Reduce by`
-8. Jeśli chcesz pominąć konkretne elementy, włącz `Skip instances`, ustaw `Skip count` i podaj pary `row/column`
+8. Jeśli chcesz pominąć konkretne elementy, włącz `Skip instances` i wpisz listę par, np. `2,3; 4,5`
 
 ## ⚙️ Wymagania techniczne
 
