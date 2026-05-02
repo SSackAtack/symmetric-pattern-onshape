@@ -59,6 +59,11 @@ export const STAGGER_OFFSET_BOUNDS =
     (unitless) : [1, 50, 99]
 } as RealBoundSpec;
 
+export const REDUCE_COUNT_BOUNDS =
+{
+    (unitless) : [1, 1, 499]
+} as IntegerBoundSpec;
+
 // --- Feature definition ---
 
 annotation { "Feature Type Name" : "Symmetric Pattern",
@@ -127,6 +132,15 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
 
             if (definition.staggerMode != StaggerMode.NONE)
             {
+                annotation { "Name" : "Reduce staggered rows" }
+                definition.reduceStaggeredRows is boolean;
+
+                if (definition.reduceStaggeredRows)
+                {
+                    annotation { "Name" : "Reduce by" }
+                    isInteger(definition.staggeredRowReduction, REDUCE_COUNT_BOUNDS);
+                }
+
                 annotation { "Name" : "Edge mode",
                              "UIHint" : UIHint.HORIZONTAL_ENUM }
                 definition.alignment is AlignmentMode;
@@ -195,6 +209,8 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
         var staggerMode = StaggerMode.NONE;
         var staggerFraction = 0.0;
         var alignment = AlignmentMode.SKIP;
+        var reduceStaggeredRows = false;
+        var staggeredRowReduction = 0;
 
         if (definition.gridMode == GridMode.GRID)
         {
@@ -243,6 +259,12 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
 
             if (staggerMode != StaggerMode.NONE)
             {
+                reduceStaggeredRows = definition.reduceStaggeredRows;
+                if (reduceStaggeredRows)
+                {
+                    staggeredRowReduction = definition.staggeredRowReduction;
+                }
+
                 alignment = definition.alignment;
             }
         }
@@ -256,13 +278,24 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
         for (var i = 0; i < rowCount; i += 1)
         {
             // Compute stagger offset for odd rows
+            var isStaggeredRow = (i % 2 != 0 && staggerMode != StaggerMode.NONE);
             var staggerOffset = 0 * meter;
-            if (i % 2 != 0 && staggerMode != StaggerMode.NONE)
+            if (isStaggeredRow)
             {
                 staggerOffset = colSpacing * staggerFraction;
             }
 
-            for (var j = 0; j < definition.columnCount; j += 1)
+            var currentColumnCount = definition.columnCount;
+            if (isStaggeredRow && reduceStaggeredRows)
+            {
+                currentColumnCount = definition.columnCount - staggeredRowReduction;
+                if (currentColumnCount < 1)
+                {
+                    currentColumnCount = 1;
+                }
+            }
+
+            for (var j = 0; j < currentColumnCount; j += 1)
             {
                 // Row 0: skip j=0 (that's the original entity)
                 // Row > 0: include j=0 (copy below original)

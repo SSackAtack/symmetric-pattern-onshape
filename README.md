@@ -22,6 +22,7 @@ Symmetric Pattern pozwala na rozmieszczenie kopii bryły lub operacji (np. otwor
 | **Grid Mode** | `Linear` (jeden rząd) lub `Grid` (wiele rzędów) |
 | **Rows / Row End Point** | Liczba rzędów i punkt końcowy osi rzędów |
 | **Stagger** | Przesunięcie co drugiego rzędu: `None`, `50%`, `Custom (%)` |
+| **Reduce Staggered Rows** | Opcjonalnie zmniejsza liczbę elementów w przesuniętych rzędach, usuwając elementy z prawego końca |
 | **Edge Mode** | `Skip` — pomija elementy wychodzące poza granicę Start-End |
 
 ## 🧮 Logika symetrycznego rozkładu
@@ -43,6 +44,8 @@ Start   ├─ d ─┤                          ├─ d ─┤   End
 
 W trybie `Grid` punkt `Row end point` wyznacza końcową granicę osi rzędów, analogicznie do `End point` dla kolumn. Początkiem osi rzędów jest `Start point`, a kierunek rzędów jest rzutowany prostopadle do osi kolumn. Skrypt mierzy margines oryginału od `Start point` po osi rzędów i odbija go przy `Row end point`, dzięki czemu pierwszy i ostatni rząd mają taki sam margines pionowy, a kolejne rzędy nie dryfują poziomo.
 
+Jeśli włączysz `Stagger`, możesz dodatkowo użyć `Reduce staggered rows`. Przesunięte rzędy zachowują pierwszy element na pozycji wynikającej ze stagger offsetu, a wskazana liczba elementów jest usuwana z prawego końca rzędu.
+
 ## 🔧 Jak używać
 
 1. Stwórz operację (np. `Extrude` z otworem) w Part Studio
@@ -51,6 +54,7 @@ W trybie `Grid` punkt `Row end point` wyznacza końcową granicę osi rzędów, 
 4. Wskaż `Start point` i `End point` (wierzchołki szkicu lub krawędzi)
 5. Ustaw liczbę `Columns`
 6. Opcjonalnie włącz `Grid` → ustaw `Rows`, wskaż `Row end point`, ustaw `Stagger`
+7. Jeśli przesunięty rząd wchodzi w prawy margines, włącz `Reduce staggered rows` i ustaw `Reduce by`
 
 ## ⚙️ Wymagania techniczne
 
@@ -87,4 +91,5 @@ W trybie `Grid` punkt `Row end point` wyznacza końcową granicę osi rzędów, 
 5. ✅ Obsługa Grid z Rows, Row End Point i Stagger (Half/Custom)
 6. ✅ Implementacja symetrycznego rozkładu: `L/(N+1)` → centroid-based `evBox3d`
 7. ✅ Poprawka nazw pól: `patternBodies/patternFaces` → `targetBody/targetFaces`
-8. 🔲 Test symetrii w Onshape — **wymaga wklejenia najnowszego kodu**
+8. ✅ Redukcja liczby elementów w przesuniętych rzędach (`Reduce staggered rows`)
+9. 🔲 Test symetrii w Onshape — **wymaga wklejenia najnowszego kodu**

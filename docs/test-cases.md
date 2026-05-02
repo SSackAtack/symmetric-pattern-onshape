@@ -104,6 +104,20 @@
 
 ---
 
+### Test 5a: Redukcja przesuniętych rzędów
+| Parametr | Wartość |
+|---|---|
+| Kolumny | 5 |
+| Wiersze | 4 |
+| Zakładka | 50% |
+| Reduce staggered rows | Włączone |
+| Reduce by | 1 |
+| Tryb krawędzi | Pomiń elementy |
+
+**Oczekiwany wynik:** Rzędy bez przesunięcia mają 5 elementów. Rzędy przesunięte mają 4 elementy; pierwszy element nadal zaczyna się od przesunięcia `50%`, a brakujący element jest usunięty z prawego końca rzędu.
+
+---
+
 ### Test 6: Edycja parametrów
 1. Utwórz szyk 1×5
 2. Dwuklik na feature w drzewie historii
