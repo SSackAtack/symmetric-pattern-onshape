@@ -118,6 +118,20 @@
 
 ---
 
+### Test 5b: Ręczne pomijanie wielu instancji
+| Parametr | Wartość |
+|---|---|
+| Kolumny | 5 |
+| Wiersze | 4 |
+| Skip instances | Włączone |
+| Skip count | 2 |
+| Skip 1 row / column | 2 / 3 |
+| Skip 2 row / column | 4 / 5 |
+
+**Oczekiwany wynik:** Elementy w rzędzie 2 kolumnie 3 oraz rzędzie 4 kolumnie 5 nie powstają. Pozostałe elementy szyku pozostają bez zmian.
+
+---
+
 ### Test 6: Edycja parametrów
 1. Utwórz szyk 1×5
 2. Dwuklik na feature w drzewie historii

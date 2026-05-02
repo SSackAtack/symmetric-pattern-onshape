@@ -64,6 +64,16 @@ export const REDUCE_COUNT_BOUNDS =
     (unitless) : [1, 1, 499]
 } as IntegerBoundSpec;
 
+export const SKIP_COUNT_BOUNDS =
+{
+    (unitless) : [1, 1, 10]
+} as IntegerBoundSpec;
+
+export const SKIP_INDEX_BOUNDS =
+{
+    (unitless) : [1, 1, 500]
+} as IntegerBoundSpec;
+
 // --- Feature definition ---
 
 annotation { "Feature Type Name" : "Symmetric Pattern",
@@ -145,6 +155,105 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                              "UIHint" : UIHint.HORIZONTAL_ENUM }
                 definition.alignment is AlignmentMode;
             }
+
+            annotation { "Name" : "Skip instances" }
+            definition.skipInstances is boolean;
+
+            if (definition.skipInstances)
+            {
+                annotation { "Name" : "Skip count" }
+                isInteger(definition.skipCount, SKIP_COUNT_BOUNDS);
+
+                if (definition.skipCount >= 1)
+                {
+                    annotation { "Name" : "Skip 1 row" }
+                    isInteger(definition.skip1Row, SKIP_INDEX_BOUNDS);
+
+                    annotation { "Name" : "Skip 1 column" }
+                    isInteger(definition.skip1Column, SKIP_INDEX_BOUNDS);
+                }
+
+                if (definition.skipCount >= 2)
+                {
+                    annotation { "Name" : "Skip 2 row" }
+                    isInteger(definition.skip2Row, SKIP_INDEX_BOUNDS);
+
+                    annotation { "Name" : "Skip 2 column" }
+                    isInteger(definition.skip2Column, SKIP_INDEX_BOUNDS);
+                }
+
+                if (definition.skipCount >= 3)
+                {
+                    annotation { "Name" : "Skip 3 row" }
+                    isInteger(definition.skip3Row, SKIP_INDEX_BOUNDS);
+
+                    annotation { "Name" : "Skip 3 column" }
+                    isInteger(definition.skip3Column, SKIP_INDEX_BOUNDS);
+                }
+
+                if (definition.skipCount >= 4)
+                {
+                    annotation { "Name" : "Skip 4 row" }
+                    isInteger(definition.skip4Row, SKIP_INDEX_BOUNDS);
+
+                    annotation { "Name" : "Skip 4 column" }
+                    isInteger(definition.skip4Column, SKIP_INDEX_BOUNDS);
+                }
+
+                if (definition.skipCount >= 5)
+                {
+                    annotation { "Name" : "Skip 5 row" }
+                    isInteger(definition.skip5Row, SKIP_INDEX_BOUNDS);
+
+                    annotation { "Name" : "Skip 5 column" }
+                    isInteger(definition.skip5Column, SKIP_INDEX_BOUNDS);
+                }
+
+                if (definition.skipCount >= 6)
+                {
+                    annotation { "Name" : "Skip 6 row" }
+                    isInteger(definition.skip6Row, SKIP_INDEX_BOUNDS);
+
+                    annotation { "Name" : "Skip 6 column" }
+                    isInteger(definition.skip6Column, SKIP_INDEX_BOUNDS);
+                }
+
+                if (definition.skipCount >= 7)
+                {
+                    annotation { "Name" : "Skip 7 row" }
+                    isInteger(definition.skip7Row, SKIP_INDEX_BOUNDS);
+
+                    annotation { "Name" : "Skip 7 column" }
+                    isInteger(definition.skip7Column, SKIP_INDEX_BOUNDS);
+                }
+
+                if (definition.skipCount >= 8)
+                {
+                    annotation { "Name" : "Skip 8 row" }
+                    isInteger(definition.skip8Row, SKIP_INDEX_BOUNDS);
+
+                    annotation { "Name" : "Skip 8 column" }
+                    isInteger(definition.skip8Column, SKIP_INDEX_BOUNDS);
+                }
+
+                if (definition.skipCount >= 9)
+                {
+                    annotation { "Name" : "Skip 9 row" }
+                    isInteger(definition.skip9Row, SKIP_INDEX_BOUNDS);
+
+                    annotation { "Name" : "Skip 9 column" }
+                    isInteger(definition.skip9Column, SKIP_INDEX_BOUNDS);
+                }
+
+                if (definition.skipCount >= 10)
+                {
+                    annotation { "Name" : "Skip 10 row" }
+                    isInteger(definition.skip10Row, SKIP_INDEX_BOUNDS);
+
+                    annotation { "Name" : "Skip 10 column" }
+                    isInteger(definition.skip10Column, SKIP_INDEX_BOUNDS);
+                }
+            }
         }
     }
     {
@@ -211,6 +320,7 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
         var alignment = AlignmentMode.SKIP;
         var reduceStaggeredRows = false;
         var staggeredRowReduction = 0;
+        var skipInstances = false;
 
         if (definition.gridMode == GridMode.GRID)
         {
@@ -267,6 +377,8 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
 
                 alignment = definition.alignment;
             }
+
+            skipInstances = definition.skipInstances;
         }
 
         // ============================================================
@@ -300,6 +412,11 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                 // Row 0: skip j=0 (that's the original entity)
                 // Row > 0: include j=0 (copy below original)
                 if (i == 0 && j == 0)
+                {
+                    continue;
+                }
+
+                if (skipInstances && shouldSkipInstance(definition, i + 1, j + 1))
                 {
                     continue;
                 }
@@ -379,4 +496,50 @@ function getSingleVertexPoint(context is Context, vertexQuery is Query, paramete
     return evVertexPoint(context, {
         "vertex" : qNthElement(vertexQuery, 0)
     });
+}
+
+function shouldSkipInstance(definition is map, rowIndex is number, columnIndex is number) returns boolean
+{
+    if (definition.skipCount >= 1 && definition.skip1Row == rowIndex && definition.skip1Column == columnIndex)
+    {
+        return true;
+    }
+    if (definition.skipCount >= 2 && definition.skip2Row == rowIndex && definition.skip2Column == columnIndex)
+    {
+        return true;
+    }
+    if (definition.skipCount >= 3 && definition.skip3Row == rowIndex && definition.skip3Column == columnIndex)
+    {
+        return true;
+    }
+    if (definition.skipCount >= 4 && definition.skip4Row == rowIndex && definition.skip4Column == columnIndex)
+    {
+        return true;
+    }
+    if (definition.skipCount >= 5 && definition.skip5Row == rowIndex && definition.skip5Column == columnIndex)
+    {
+        return true;
+    }
+    if (definition.skipCount >= 6 && definition.skip6Row == rowIndex && definition.skip6Column == columnIndex)
+    {
+        return true;
+    }
+    if (definition.skipCount >= 7 && definition.skip7Row == rowIndex && definition.skip7Column == columnIndex)
+    {
+        return true;
+    }
+    if (definition.skipCount >= 8 && definition.skip8Row == rowIndex && definition.skip8Column == columnIndex)
+    {
+        return true;
+    }
+    if (definition.skipCount >= 9 && definition.skip9Row == rowIndex && definition.skip9Column == columnIndex)
+    {
+        return true;
+    }
+    if (definition.skipCount >= 10 && definition.skip10Row == rowIndex && definition.skip10Column == columnIndex)
+    {
+        return true;
+    }
+
+    return false;
 }

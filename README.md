@@ -23,6 +23,7 @@ Symmetric Pattern pozwala na rozmieszczenie kopii bryły lub operacji (np. otwor
 | **Rows / Row End Point** | Liczba rzędów i punkt końcowy osi rzędów |
 | **Stagger** | Przesunięcie co drugiego rzędu: `None`, `50%`, `Custom (%)` |
 | **Reduce Staggered Rows** | Opcjonalnie zmniejsza liczbę elementów w przesuniętych rzędach, usuwając elementy z prawego końca |
+| **Skip Instances** | Ręcznie pomija wybrane instancje przez numer rzędu i kolumny |
 | **Edge Mode** | `Skip` — pomija elementy wychodzące poza granicę Start-End |
 
 ## 🧮 Logika symetrycznego rozkładu
@@ -46,6 +47,8 @@ W trybie `Grid` punkt `Row end point` wyznacza końcową granicę osi rzędów, 
 
 Jeśli włączysz `Stagger`, możesz dodatkowo użyć `Reduce staggered rows`. Przesunięte rzędy zachowują pierwszy element na pozycji wynikającej ze stagger offsetu, a wskazana liczba elementów jest usuwana z prawego końca rzędu.
 
+Opcja `Skip instances` pozwala pominąć do 10 konkretnych instancji przez pary `row/column`. Numeracja jest użytkowa, od `1`, więc `row = 2`, `column = 3` oznacza drugi rząd i trzecią kolumnę.
+
 ## 🔧 Jak używać
 
 1. Stwórz operację (np. `Extrude` z otworem) w Part Studio
@@ -55,6 +58,7 @@ Jeśli włączysz `Stagger`, możesz dodatkowo użyć `Reduce staggered rows`. P
 5. Ustaw liczbę `Columns`
 6. Opcjonalnie włącz `Grid` → ustaw `Rows`, wskaż `Row end point`, ustaw `Stagger`
 7. Jeśli przesunięty rząd wchodzi w prawy margines, włącz `Reduce staggered rows` i ustaw `Reduce by`
+8. Jeśli chcesz pominąć konkretne elementy, włącz `Skip instances`, ustaw `Skip count` i podaj pary `row/column`
 
 ## ⚙️ Wymagania techniczne
 
@@ -92,4 +96,5 @@ Jeśli włączysz `Stagger`, możesz dodatkowo użyć `Reduce staggered rows`. P
 6. ✅ Implementacja symetrycznego rozkładu: `L/(N+1)` → centroid-based `evBox3d`
 7. ✅ Poprawka nazw pól: `patternBodies/patternFaces` → `targetBody/targetFaces`
 8. ✅ Redukcja liczby elementów w przesuniętych rzędach (`Reduce staggered rows`)
-9. 🔲 Test symetrii w Onshape — **wymaga wklejenia najnowszego kodu**
+9. ✅ Ręczne pomijanie instancji przez pary `row/column`
+10. 🔲 Test symetrii w Onshape — **wymaga wklejenia najnowszego kodu**
