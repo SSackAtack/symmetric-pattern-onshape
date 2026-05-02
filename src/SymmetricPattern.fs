@@ -164,95 +164,65 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                 annotation { "Name" : "Skip count" }
                 isInteger(definition.skipCount, SKIP_COUNT_BOUNDS);
 
-                if (definition.skipCount > 0)
-                {
-                    annotation { "Name" : "Skip 1 row" }
-                    isInteger(definition.skip1Row, SKIP_INDEX_BOUNDS);
+                annotation { "Name" : "Skip 1 row" }
+                isInteger(definition.skip1Row, SKIP_INDEX_BOUNDS);
 
-                    annotation { "Name" : "Skip 1 column" }
-                    isInteger(definition.skip1Column, SKIP_INDEX_BOUNDS);
-                }
+                annotation { "Name" : "Skip 1 column" }
+                isInteger(definition.skip1Column, SKIP_INDEX_BOUNDS);
 
-                if (definition.skipCount > 1)
-                {
-                    annotation { "Name" : "Skip 2 row" }
-                    isInteger(definition.skip2Row, SKIP_INDEX_BOUNDS);
+                annotation { "Name" : "Skip 2 row" }
+                isInteger(definition.skip2Row, SKIP_INDEX_BOUNDS);
 
-                    annotation { "Name" : "Skip 2 column" }
-                    isInteger(definition.skip2Column, SKIP_INDEX_BOUNDS);
-                }
+                annotation { "Name" : "Skip 2 column" }
+                isInteger(definition.skip2Column, SKIP_INDEX_BOUNDS);
 
-                if (definition.skipCount > 2)
-                {
-                    annotation { "Name" : "Skip 3 row" }
-                    isInteger(definition.skip3Row, SKIP_INDEX_BOUNDS);
+                annotation { "Name" : "Skip 3 row" }
+                isInteger(definition.skip3Row, SKIP_INDEX_BOUNDS);
 
-                    annotation { "Name" : "Skip 3 column" }
-                    isInteger(definition.skip3Column, SKIP_INDEX_BOUNDS);
-                }
+                annotation { "Name" : "Skip 3 column" }
+                isInteger(definition.skip3Column, SKIP_INDEX_BOUNDS);
 
-                if (definition.skipCount > 3)
-                {
-                    annotation { "Name" : "Skip 4 row" }
-                    isInteger(definition.skip4Row, SKIP_INDEX_BOUNDS);
+                annotation { "Name" : "Skip 4 row" }
+                isInteger(definition.skip4Row, SKIP_INDEX_BOUNDS);
 
-                    annotation { "Name" : "Skip 4 column" }
-                    isInteger(definition.skip4Column, SKIP_INDEX_BOUNDS);
-                }
+                annotation { "Name" : "Skip 4 column" }
+                isInteger(definition.skip4Column, SKIP_INDEX_BOUNDS);
 
-                if (definition.skipCount > 4)
-                {
-                    annotation { "Name" : "Skip 5 row" }
-                    isInteger(definition.skip5Row, SKIP_INDEX_BOUNDS);
+                annotation { "Name" : "Skip 5 row" }
+                isInteger(definition.skip5Row, SKIP_INDEX_BOUNDS);
 
-                    annotation { "Name" : "Skip 5 column" }
-                    isInteger(definition.skip5Column, SKIP_INDEX_BOUNDS);
-                }
+                annotation { "Name" : "Skip 5 column" }
+                isInteger(definition.skip5Column, SKIP_INDEX_BOUNDS);
 
-                if (definition.skipCount > 5)
-                {
-                    annotation { "Name" : "Skip 6 row" }
-                    isInteger(definition.skip6Row, SKIP_INDEX_BOUNDS);
+                annotation { "Name" : "Skip 6 row" }
+                isInteger(definition.skip6Row, SKIP_INDEX_BOUNDS);
 
-                    annotation { "Name" : "Skip 6 column" }
-                    isInteger(definition.skip6Column, SKIP_INDEX_BOUNDS);
-                }
+                annotation { "Name" : "Skip 6 column" }
+                isInteger(definition.skip6Column, SKIP_INDEX_BOUNDS);
 
-                if (definition.skipCount > 6)
-                {
-                    annotation { "Name" : "Skip 7 row" }
-                    isInteger(definition.skip7Row, SKIP_INDEX_BOUNDS);
+                annotation { "Name" : "Skip 7 row" }
+                isInteger(definition.skip7Row, SKIP_INDEX_BOUNDS);
 
-                    annotation { "Name" : "Skip 7 column" }
-                    isInteger(definition.skip7Column, SKIP_INDEX_BOUNDS);
-                }
+                annotation { "Name" : "Skip 7 column" }
+                isInteger(definition.skip7Column, SKIP_INDEX_BOUNDS);
 
-                if (definition.skipCount > 7)
-                {
-                    annotation { "Name" : "Skip 8 row" }
-                    isInteger(definition.skip8Row, SKIP_INDEX_BOUNDS);
+                annotation { "Name" : "Skip 8 row" }
+                isInteger(definition.skip8Row, SKIP_INDEX_BOUNDS);
 
-                    annotation { "Name" : "Skip 8 column" }
-                    isInteger(definition.skip8Column, SKIP_INDEX_BOUNDS);
-                }
+                annotation { "Name" : "Skip 8 column" }
+                isInteger(definition.skip8Column, SKIP_INDEX_BOUNDS);
 
-                if (definition.skipCount > 8)
-                {
-                    annotation { "Name" : "Skip 9 row" }
-                    isInteger(definition.skip9Row, SKIP_INDEX_BOUNDS);
+                annotation { "Name" : "Skip 9 row" }
+                isInteger(definition.skip9Row, SKIP_INDEX_BOUNDS);
 
-                    annotation { "Name" : "Skip 9 column" }
-                    isInteger(definition.skip9Column, SKIP_INDEX_BOUNDS);
-                }
+                annotation { "Name" : "Skip 9 column" }
+                isInteger(definition.skip9Column, SKIP_INDEX_BOUNDS);
 
-                if (definition.skipCount > 9)
-                {
-                    annotation { "Name" : "Skip 10 row" }
-                    isInteger(definition.skip10Row, SKIP_INDEX_BOUNDS);
+                annotation { "Name" : "Skip 10 row" }
+                isInteger(definition.skip10Row, SKIP_INDEX_BOUNDS);
 
-                    annotation { "Name" : "Skip 10 column" }
-                    isInteger(definition.skip10Column, SKIP_INDEX_BOUNDS);
-                }
+                annotation { "Name" : "Skip 10 column" }
+                isInteger(definition.skip10Column, SKIP_INDEX_BOUNDS);
             }
         }
     }
