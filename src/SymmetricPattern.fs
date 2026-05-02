@@ -164,7 +164,7 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                 annotation { "Name" : "Skip count" }
                 isInteger(definition.skipCount, SKIP_COUNT_BOUNDS);
 
-                if (definition.skipCount >= 1)
+                if (definition.skipCount > 0)
                 {
                     annotation { "Name" : "Skip 1 row" }
                     isInteger(definition.skip1Row, SKIP_INDEX_BOUNDS);
@@ -173,7 +173,7 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                     isInteger(definition.skip1Column, SKIP_INDEX_BOUNDS);
                 }
 
-                if (definition.skipCount >= 2)
+                if (definition.skipCount > 1)
                 {
                     annotation { "Name" : "Skip 2 row" }
                     isInteger(definition.skip2Row, SKIP_INDEX_BOUNDS);
@@ -182,7 +182,7 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                     isInteger(definition.skip2Column, SKIP_INDEX_BOUNDS);
                 }
 
-                if (definition.skipCount >= 3)
+                if (definition.skipCount > 2)
                 {
                     annotation { "Name" : "Skip 3 row" }
                     isInteger(definition.skip3Row, SKIP_INDEX_BOUNDS);
@@ -191,7 +191,7 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                     isInteger(definition.skip3Column, SKIP_INDEX_BOUNDS);
                 }
 
-                if (definition.skipCount >= 4)
+                if (definition.skipCount > 3)
                 {
                     annotation { "Name" : "Skip 4 row" }
                     isInteger(definition.skip4Row, SKIP_INDEX_BOUNDS);
@@ -200,7 +200,7 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                     isInteger(definition.skip4Column, SKIP_INDEX_BOUNDS);
                 }
 
-                if (definition.skipCount >= 5)
+                if (definition.skipCount > 4)
                 {
                     annotation { "Name" : "Skip 5 row" }
                     isInteger(definition.skip5Row, SKIP_INDEX_BOUNDS);
@@ -209,7 +209,7 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                     isInteger(definition.skip5Column, SKIP_INDEX_BOUNDS);
                 }
 
-                if (definition.skipCount >= 6)
+                if (definition.skipCount > 5)
                 {
                     annotation { "Name" : "Skip 6 row" }
                     isInteger(definition.skip6Row, SKIP_INDEX_BOUNDS);
@@ -218,7 +218,7 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                     isInteger(definition.skip6Column, SKIP_INDEX_BOUNDS);
                 }
 
-                if (definition.skipCount >= 7)
+                if (definition.skipCount > 6)
                 {
                     annotation { "Name" : "Skip 7 row" }
                     isInteger(definition.skip7Row, SKIP_INDEX_BOUNDS);
@@ -227,7 +227,7 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                     isInteger(definition.skip7Column, SKIP_INDEX_BOUNDS);
                 }
 
-                if (definition.skipCount >= 8)
+                if (definition.skipCount > 7)
                 {
                     annotation { "Name" : "Skip 8 row" }
                     isInteger(definition.skip8Row, SKIP_INDEX_BOUNDS);
@@ -236,7 +236,7 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                     isInteger(definition.skip8Column, SKIP_INDEX_BOUNDS);
                 }
 
-                if (definition.skipCount >= 9)
+                if (definition.skipCount > 8)
                 {
                     annotation { "Name" : "Skip 9 row" }
                     isInteger(definition.skip9Row, SKIP_INDEX_BOUNDS);
@@ -245,7 +245,7 @@ export const symmetricPattern = defineFeature(function(context is Context, id is
                     isInteger(definition.skip9Column, SKIP_INDEX_BOUNDS);
                 }
 
-                if (definition.skipCount >= 10)
+                if (definition.skipCount > 9)
                 {
                     annotation { "Name" : "Skip 10 row" }
                     isInteger(definition.skip10Row, SKIP_INDEX_BOUNDS);
@@ -500,43 +500,43 @@ function getSingleVertexPoint(context is Context, vertexQuery is Query, paramete
 
 function shouldSkipInstance(definition is map, rowIndex is number, columnIndex is number) returns boolean
 {
-    if (definition.skipCount >= 1 && definition.skip1Row == rowIndex && definition.skip1Column == columnIndex)
+    if (definition.skipCount > 0 && definition.skip1Row == rowIndex && definition.skip1Column == columnIndex)
     {
         return true;
     }
-    if (definition.skipCount >= 2 && definition.skip2Row == rowIndex && definition.skip2Column == columnIndex)
+    if (definition.skipCount > 1 && definition.skip2Row == rowIndex && definition.skip2Column == columnIndex)
     {
         return true;
     }
-    if (definition.skipCount >= 3 && definition.skip3Row == rowIndex && definition.skip3Column == columnIndex)
+    if (definition.skipCount > 2 && definition.skip3Row == rowIndex && definition.skip3Column == columnIndex)
     {
         return true;
     }
-    if (definition.skipCount >= 4 && definition.skip4Row == rowIndex && definition.skip4Column == columnIndex)
+    if (definition.skipCount > 3 && definition.skip4Row == rowIndex && definition.skip4Column == columnIndex)
     {
         return true;
     }
-    if (definition.skipCount >= 5 && definition.skip5Row == rowIndex && definition.skip5Column == columnIndex)
+    if (definition.skipCount > 4 && definition.skip5Row == rowIndex && definition.skip5Column == columnIndex)
     {
         return true;
     }
-    if (definition.skipCount >= 6 && definition.skip6Row == rowIndex && definition.skip6Column == columnIndex)
+    if (definition.skipCount > 5 && definition.skip6Row == rowIndex && definition.skip6Column == columnIndex)
     {
         return true;
     }
-    if (definition.skipCount >= 7 && definition.skip7Row == rowIndex && definition.skip7Column == columnIndex)
+    if (definition.skipCount > 6 && definition.skip7Row == rowIndex && definition.skip7Column == columnIndex)
     {
         return true;
     }
-    if (definition.skipCount >= 8 && definition.skip8Row == rowIndex && definition.skip8Column == columnIndex)
+    if (definition.skipCount > 7 && definition.skip8Row == rowIndex && definition.skip8Column == columnIndex)
     {
         return true;
     }
-    if (definition.skipCount >= 9 && definition.skip9Row == rowIndex && definition.skip9Column == columnIndex)
+    if (definition.skipCount > 8 && definition.skip9Row == rowIndex && definition.skip9Column == columnIndex)
     {
         return true;
     }
-    if (definition.skipCount >= 10 && definition.skip10Row == rowIndex && definition.skip10Column == columnIndex)
+    if (definition.skipCount > 9 && definition.skip10Row == rowIndex && definition.skip10Column == columnIndex)
     {
         return true;
     }
